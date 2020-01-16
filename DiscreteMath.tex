@@ -1,0 +1,543 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathtext}
+\usepackage{makeidx}
+\usepackage[T2A]{fontenc}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm,bindingoffset=0cm]{geometry}
+
+%\hoffset=-3cm
+%\textwidth=18cm
+%\voffset=-3cm
+%\textheight=26cm
+
+\begin{document}
+%\fontsize{15}{25pt}\selectfont
+
+\section{Комбинаторные правила произведения и суммы. Число выборок объема k из n элементов. }
+
+\subsection{Правило произведенеия}
+	Если $a \in A$ можно выбрать $n$ способами и для каждого такого выбора
+	$b \in B$ можем выбрать $m$ способами, то пару $ab$ мы можем выбрать $n\cdot m$ способами.\\
+	$| A_1 \times \dotsb \times A_n| = |A_1| \times \dotsb \times |A_n|$
+
+\subsection{Правило суммы}
+	Если элемент $a \in A$ может быть выбран $n$ способами и независимо, а элемент $b \in B$ может быть выбран m способами, то выбор "$a$ или $b$" может быть осуществлён $n + m$ способами.\\
+	$\forall$ разбиения конечного множества A = $A_1 \sqcup \dotsb \sqcup A_n \newline$ 
+	$|A| = |A_1| + \dotsb + |A_n|$
+
+\subsection{Число выборок объема k из n элементов}
+\subsubsection{Упорядоченная выборка объема k из n элементов с повторениями (число кортежей)}
+	$\widetilde{A}_n^k = n^k$
+
+\subsubsection{Упорядоченная выборка объема k из n элементов без повторений (число k-размещений)}
+	$[n]_k = n(n - 1)\dotsb(n - k + 1) = \frac{n!}{(n-k)!}$\\
+	\textbf{Доказательство:}\\
+	Индукция по k:\\
+	$k = 1$: $[n]_1 = n$\\
+	$k > 1$: $[n]_k = [n]_{k-1}(n-k+1)$\\
+	\qedsymbol
+
+\subsubsection{Неупорядоченные выборки объема k из n элементов без повторений (сочетания)}
+	$\forall$ $n,k$ $0 \leqslant k \leqslant n$\\
+	$\binom{n}{k} = C_n^k = \frac{[n]_k}{k!} = \frac{n!}{k!(n-k)!}$\\\\
+	\textbf{Доказательство:}\\
+	Индукция по $n$\\
+	$n = 1$: $\binom{1}{0} = 1$; $\binom{1}{1} = 1$\\
+	$n \geqslant 2$:\\
+	Если $k = n$, то $\binom{n}{n} = 1 = \frac{n!}{n!\cdot0!}$\\
+	Если $k < n$, то\\
+	$\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1} = \frac{(n-1)!}{k!(n-k-1)!} + \frac{(n-1)!}{(k-1)!(n-k)!} = \frac{(n-1)!(n-k+k)}{k!(n-k)!} = \frac{n!}{k!(n-k)!}\\$
+	\qedsymbol\\
+\subsubsection{Неупорядоченные выборки объема k из n элементов с повторениями (число мультимножеств)}
+	$\widehat{C}^m_n = C^{n-1}_{n+m-1} = C^{m}_{n+m-1}$\\
+	\textbf{Доказательство:}\\
+	<$\alpha_1,\dotsc\alpha_n$> задаёт наше m-сочетание с повторениями\\
+	Сопоставим ему двоичный кортеж\\
+	$(\underbrace{0,\dotsc,0}_{\alpha_1},1,\underbrace{0,\dotsc,0}_{\alpha_2},1,\dotsc,1,\underbrace{0,\dotsc,0}_{\alpha_n})$\\
+	Знаем, что $\displaystyle\sum_{i=1}^{n}\alpha_i = m$ $\Rightarrow$ длина кортежа $m + n - 1$ и в нём $n-1$ единица. Таких кортежей $C^{n-1}_{n+m-1}$\\
+	\qedsymbol
+
+\section{Число выборок объема k из n элементов. Комбинаторные тождества. Бином Ньютона.}
+\subsection{Число выборок объема k из n элементов.}
+	См. пункт 1.3
+\subsection{Комбинаторные тождества}
+\subsubsection{Тождество Паскаля}
+	$\forall n,k$ $1 \leqslant k < n$\\
+	$\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$\\
+	\textbf{Доказательство:}\\
+	M — все k-подмножества n-множества\\
+	$|M| = \binom{n}{k}$\\
+	$M_1 \subseteq M$  — не попал элемент a\\
+	$M_2 \subseteq M$  — попал элемент a\\
+	$\Downarrow$\\
+	$M = M_1 \sqcup M_2 \Rightarrow |M| = |M_1| + |M_2| = \binom{n-1}{k} + \binom{n-1}{k-1}$\\
+	\qedsymbol
+
+\subsubsection{}
+	$\binom{n}{k} = \binom{n}{n-k}$\\
+	\textbf{Доказательство:}\\
+	$\binom{n}{n-k} = \frac{n!}{(n-k)!(n-(n-k))!} = \frac{n!}{(n-k)!k!} = \binom{n}{k}$\\
+	\qedsymbol
+
+\subsection{Бином Ньютона}
+	$\forall n \in \mathbb N$\\
+	$(a+b)^n = \displaystyle\sum_{k=0}^n\binom{n}{k}a^kb^{n-k}$\\
+	\textbf{Доказательство:}\\
+	$(a+b)^n = (a+b)(a+b)\dotsm(a+b) = \displaystyle\sum_{k=0}^n\binom{n}{k}a^kb^{n-k}$\\
+	\qedsymbol
+
+\subsection{Обобщение бинома Ньютона}
+	$(x_1+\dotsb+x_k)^n = \displaystyle\sum_{\alpha_1,\dotsc,\alpha_k ; \alpha_i \geqslant 0 ; \alpha_1+\dotsb+\alpha_k = n} P_n(\alpha_1\dotsc\alpha_k)x_1^{\alpha_1}\dotsm x_k^{\alpha_k}$\\
+	$P_n(\alpha_1\dotsc\alpha_k)$ — полиномиальный коэффициент\\
+	\textbf{Доказательство:}\\
+	Упражнение\\
+	\qedsymbol
+
+\section{Мультимножества, их спецификации. Полиномиальные коэффициенты.}
+\subsection{Мультимножества, их спецификации.}
+\subsubsection{Мультимножество первичной спецификации}
+	Рассмотрим X = \{$x_1,\dotsc,x_n$\}\\
+	и кортеж $(\alpha_1,\dotsc,\alpha_n)$ на $\mathbb N_0$ т. ч. $\alpha_1+\dotsb+\alpha_n = m$\\
+	Совокупность из m элементов множества x, в которой $x_i$ встречается $\alpha_i$ раз $\forall$ i — m-мультимножество первичной спецификации
+	$[x_1^{\alpha_1},\dotsc,x_n^{\alpha_n}]$ порождённое множеством X.
+\subsubsection{Мультимножество вторичной спецификации}
+	Совокупность из m элементов множества X, в которой в $<\alpha_1,\dotsc,\alpha_n>$ $\beta_0$ нулей, $\beta_1$ единиц$\dotsc$\\
+	Запись: $[[0^{\beta_0},1^{\beta_1},\dotsc,m^{\beta_m}]]$\\
+	$\beta_1 + 2\beta_2 + \dotsb + m\beta_m = m$\\
+	
+\subsection{Полиномиальные коэффициенты}
+	$P(\alpha_1,\dotsc,\alpha_n)$ — количество m-кортежей из m-мультимножества\\
+	$\forall m, \alpha_1\dotsc\alpha_n$: $\alpha_1+\dotsb+\alpha_n = m$\\
+	$P_m(\alpha_1\dotsc\alpha_n) = \frac{m!}{\alpha_1!\dotsm\alpha_n!}$\\
+	\textbf{Доказательство:}\\
+	$(\underbrace{x_1,\dotsc,x_1}_{\alpha_1},\dotsc,\underbrace{x_n,\dotsc,x_n}_{\alpha_n})$\\
+	$\alpha_1!\dotsm\alpha_n!P_m(\alpha_1,\dotsc,\alpha_n) = m!$\\
+	$\Downarrow$\\
+	$P_m = \frac{m!}{\alpha_1!\dotsm\alpha_n!}$\\
+	\qedsymbol\\
+	\\
+	$P_m(\alpha_1,\dotsc,\alpha_n)$ — полиномиальный коэффициент.\\
+	Обозначается: $\binom{m}{\alpha_1,\dotsc,\alpha_n}$\\
+
+\section{Комбинаторное правило суммы. Формула включений и исключений.}
+\subsection{Комбинаторное правило суммы.}
+	См. пункт 1.3
+\subsection{Формула включений и исключений.}
+	Пусть $A$ - конечное конечное множество\\
+	$A_1 \ldots A_n \subseteq A$\\
+	Тогда $ \displaystyle |A \setminus (A_1 \cup \ldots \cup A_n)| = \sum_{k=0}^n (-1)^kS_k$,\\
+	$S_0 = |A|$\\
+	$\forall k < 0$ $S_k = \displaystyle\sum_{\{ i_1 \ldots i_k\} \subseteq \{1\ldots n\}} |A_{i_1} \cap\ldots\cap A_{i_k}| $\\
+\textbf{Доказательсво:}\\
+	$ x \in A$\\
+	пусть $x$ попал ровно в $t$ подмножеств $A_{j_1},\dotsc\,A_{j_t}$\\
+	Вклад "x"\\
+	В $S_0 = |A|$ — 1 раз\\
+	В $S_1 = \displaystyle\sum_{i=1}^{n}|Ai|$ — t раз\\
+	В $S_2$ — $\binom{t}{2}$ раз\\\\
+	В $S_3$ — $\binom{t}{3}$ раз\\
+	\vdots\\
+	В $S_t$ — $\binom{t}{t}$ раз\\
+	Т. о. $\displaystyle 1 - t + \binom{t}{2} - \binom{t}{3} \ldots + (-1)^t \binom{t}{t} = \sum_{k=0}^{t}(-1)^k \binom{t}{k} =
+	\begin{cases}
+	0; \quad t > 0\\
+	1; \quad t = 0
+	\end{cases}$\\
+	\qedsymbol
+
+\section{Формула включений и исключений. Задача о беспорядках.}
+\subsection{Формула включений и исключений.}
+	См. пункт 4.2
+
+\subsection{Задача о беспорядках.}
+	$ \pi = (\pi_1, \ldots ,\pi_n) $ — перестановка $(1,\ldots,n)$.\\
+	Нужно найти число перестановок из $n$ элементов множества, в которых никакой элемент не остался на месте.\\	
+	\textbf{Доказательство:}\\
+	($\forall i \quad \pi_i \not= i$).\\
+	$A$ - все перестановки. $\forall i \quad A_i \leftrightarrow \pi_i = i $.\\
+	$ A \setminus (A_1 \cup \ldots \cup A_n)$ - искомое множество.\\
+	$ |A| = n! \Rightarrow S_0 = n!$\\
+	$ |A_i| = (n-1)! $\\
+	$ \displaystyle S_1 = \sum_{i=1}^n |A_i| = n\cdot(n-1)!$\\
+	при $i \neq j$ $ |A_i \cap A_j| = (n-2)!$\\
+	$ \displaystyle S_2 = \sum_{1 \le i < j \le n}  |A_i \cap A_j| = \sum_{1\le i < j\le n} (n-2)! =
+	\binom{n}{2} (n-2)! $ \\
+	$ | A_{i_1} \cap \ldots A_{i_k} | = (n-k)! $\\
+	$ \displaystyle S_k = \sum_{1 \le i_1 < \ldots < i_k \le n} (n-k)! = \binom{n}{k} (n-k)! $\\
+	$ \displaystyle | A\setminus(A_i \cup \ldots \cup A_n)| = \sum_{k=0}^n (-1)^k S_k = \sum_{k=0}^n
+	(-1)^k \binom{n}{k}(n-k)! = \sum_{k=0}^n(-1)^k\frac{n!}{(n-k)!k!} (n-k)! = n!\sum_{k=0}^n \frac{
+	(-1)^k}{k!}$\\
+	\qedsymbol
+
+\section{Функция Эйлера, формула для функции Эйлера. Формула для числа сюръективных отображений.}
+\subsection{Функция Эйлера, формула для функции Эйлера.}
+	$ \varphi(m)$ - функция Эйлера, $m \in N$. Кол-во натуральных чисел, не превосходящих $m$ и взаимно простых с $m$.\\
+	$\displaystyle \forall m \ge 2\quad m=p_1^{l_1}\cdot \ldots \cdot p_n^{l_n}$ — разложение на простые множители, тогда\\
+	$\displaystyle \varphi(m)=m \prod_{i=1}^n\left(1-\frac{1}{p_i}\right)$\\
+	\textbf{Доказательство:}\\
+		$A=\{1\ldots m\}$\\
+		$A_i$ — числа $A$, которые дляется на $p_i$, $\forall i=1\ldots m$\\
+		$|A\setminus (A_1 \cup \ldots \cup A_n|$\\
+		$\displaystyle |A| = m \quad \Rightarrow \quad S_0 = m$\\
+		$|A_i| = \frac{m}{p_i}$		$(p_i, 2p_i, 3p_i, \ldots, \frac{m}{p_i}\cdot p_i)$\\
+		$\displaystyle S_1 = \sum_{i=1}^n \frac{m}{p_i} = \sum_{i=1}^n |A_i|\\
+		|A_{i_1} \cap \ldots \cap A_{i_k}| = \frac{m}{p_{i_1} \ldots p_{i_k}}\\
+		S_k = \sum_{i\le i_1 < \ldots < i_k \le n}\frac{m}{p_{i_1} \ldots p_{i_k}}\\		
+		|A \setminus (A_1 \cup \ldots \cup A_n)| =
+		m + \sum_{k=1}^n (-1)^k S_k =
+		m + \sum_{k=1}^n (-1)^k \sum_{1\le i_1< \ldots <i_k\le n} \frac{m}{p_{i_1} \dotsm p_{i_k}} =
+		m(1 + \sum_{k=1}^n(-1)^k\sum_{1\le i_1< \ldots <i_k\le n}\frac{1}{p_{i_1} \dotsm p_{i_k}}) =
+		m\cdot(1-\frac{1}{p_1})\cdot(1-\frac{1}{p_2})\cdot...\cdot(1-\frac{1}{p_n})$\\
+	\qedsymbol\\
+
+\subsection{Формула для числа сюръективных отображений.}
+	Число сюръективных отображений из m-множества X = \{$x_1,\dotsc,\ x_m$\} в n-множество Y=\{$y_1,\dotsc,y_n$\} равно $(-1)^n\displaystyle\sum_{k=1}^n(-1)^k\binom{n}{k}k^m$\\
+	\textbf{Доказательство:}\\
+
+	$A$ — все отображения $X \rightarrow Y$ \\
+	$ A_i $ — все отображения $X \rightarrow Y \mid y_i$ — нет проообраза.\\
+	$ A \setminus (A_1 \cup \dotsb \cup A_k)$ — множество всех отображений, у которых 1-й элемент покрыт, ..., k-й элемент покрыт.\\
+	$ \displaystyle |A| = n^m = S_0 \\
+	|A_i| = (n-1)^m\\
+	S_1 = \sum_{i=1}^n|A_i| = C_n^1|A_j| = n(n-1)^m\\
+	|A_i \cap A_j| = (n-2)^m\\
+	S_2 = \sum_{1 \leqslant i < j \leqslant n}|A_i \cap A_j| = C_n^2|A_i \cap A_j| = C_n^2(n-2)^m\\
+	\vdots\\
+	|A_{i_1} \cap  \ldots  \cap A_{i_k}| = (n-k)^m\\
+	S_k = \sum_{1 \leqslant i_1 <  \ldots  < i_k \le n} (n-k)^m = C_n^k(n-k)^m\\
+	\vdots\\
+	S_n = 0\\
+	|A \setminus (A_1 \cup \ldots \cup A_k)| = \sum_{k=0}^{n-1} (-1)^k C_n^k(n-k)^m \, \overset{j=n-k}{=} \, \sum_{j=1}^n (-1)^
+	{n-j}C_{n}^{n-j}j^m = (-1)^n\sum_{j=1}^n (-1)^jC_{n}^{j}j^m$\\
+	\qedsymbol
+
+\section{Число Стирлинга второго рода. Формула для числа Стирлинга второго рода. Рекуррентное соотношение для чисел Стирлинга второго рода.}
+	\subsection{Число Стирлинга второго рода.}
+		Число стирлинга II рода $S(n,k)$ — количество неупорядоченных разбиений n-множества на k непустых подмножеств\\
+		Положим:\\
+		$S(n,0) =
+			\begin{cases}
+				0; \quad n > 0\\
+				1; \quad n = 0
+			\end{cases}$\\
+		$S(n,k) = 0; \quad k > n$
+	\subsection{Формула для числа Стирлинга второго рода.}
+			$ \displaystyle S(n,k) = \frac{(-1)^k}{k!} \sum_{i=1}^{k}(-1)^i \binom{k}{i}i^n $\\
+	\textbf{Доказательство:}\\
+		Сюръективное отображение из n-множества в k-множество сопоставляется упорядоченному разбиению n-множества на k непустых подмножеств\\
+		Их $(-1)^k\sum_{i=1}^{k}\binom{k}{i}(-1)^i i^n $\\
+		Делим на $k!$ и получаем число неупорядоченных разбиений.\\
+	\qedsymbol
+
+	\subsection{Рекуррентное соотношение для чисел Стирлинга второго рода.}
+		$\forall k,n \in N,  \quad 0 < k < n\\
+		S(n,k) = S(n-1, k-1)+k \cdot S(n-1,k)$\\
+		\textbf{Доказательство:}\\
+			$M$ — все разбиения n-множества на k непересекающихся подмножеств.\\
+			В n-множестве зафиксируем элемент $a$\\
+			$M_1$ — множество разбиений, в котрых есть одноэлементное подмножество \{a\}\\
+			$M_2 = M \setminus M_1$ — все остальные разбиения\\
+			$|M| = S(n,k)$\\
+			$|M_1| = S(n-1,k-1)$ \quad ($n-1$ т.к. один элемент уже учавствует в разбиении, $k-1$ т.к. одно множество в разбиении уже есть)\\
+			$|M_2| = kS(n-1, k)$ \quad (разбиваем $n-1$-множество на k непустых подмножеств, и добавление элемента $a$ в каждое из k подмножеств порождает разбиение изначального n-множества)\\
+			$M = M_1 \sqcup M_2$\\
+			$\Downarrow$\\
+			$|M| = |M_1| + |M_2|$\\
+			$\Downarrow$\\
+			$S(n,k) = S(n-1, k-1)+kS(n-1,k)$\\
+		\qedsymbol
+\section{Числа Бела. Теорема о числе Бела.}
+	\subsection {Числа Бела.}
+		Число Бела $B_n$ — количество неупорядоченных разбиений n-множества на непустые подмножества.\\
+		$B_0 = S(0,0)$\\
+		$\displaystyle B_n =\sum_{k=0}^{n} S(n,k)$
+	\subsection{Теорема о числе Бела.}
+		$\forall n \geqslant 2$\\
+		$$ \displaystyle  B_n = \sum_{i=0}^{n-1} \binom{n-1}{i} B_i$$
+		\textbf{Доказательство:}\\
+			$ \displaystyle B_n  =  \sum_{k=1}^{n}  S(n,k) = \sum_{k=1}^{n} \sum_{i=k-1}^{n-1}
+			S(i,k-1)\binom{n-1}{i} \overset{\text{поменяем знаки суммы местами}}{=} \sum_{i=0}^{n-1} \sum_{k=1}^{i+1} S(i,k-1) \binom{n-1}{i} = \sum_{i=0}^{n-1} \binom{n-1}{i} \sum_{k=1}^{i+1} S(i,k-1) \overset{k-1=t}{=}
+			\sum_{i=0}^{n-1} \binom{n-1}{i} \sum_{t=0}^i S(i,t) = 
+			\sum_{i=0}^{n-1} \binom{n-1}{i}B_i$\\
+		\qedsymbol\\
+		\textit{На экзамене требуется комбинаторное доказательство, но какое есть.}\\
+
+\section{Число Стирлинга первого рода. Рекуррентное соотношение для чисел Стирлинга первого рода. Связь между числами Стирлинга.}
+	\subsection{Число Стирлинга первого рода.}
+		Число Стирлинга первого рода — количество неупорядоченных разбиений n-множества на k циклов\\
+		Обозначение: $s(n,k)$\\
+	\subsection{Рекуррентное соотношение для чисел Стирлинга первого рода.}
+		Положим:\\
+		$s(n,0) = \begin{cases}
+		1; \quad n=0\\
+		0; \quad n>0
+		\end{cases}$\\
+		$s(n,k) = 0$; \quad $k > n$\\
+
+		$\forall n,k \quad 0 < k < n$\\
+		$s(n,k) = s(n-1,k-1) + (n-1)s(n-1,k)$\\
+		\textbf{Доказательство:}\\
+			Аналогично числам Стирлинга I рода\\
+		\qedsymbol
+	\subsection{Связь между числами Стирлинга.}
+		$ \displaystyle \forall n,m \in N\quad \sum_{k=1}^n S(n,k)s(k,m)(-1)^{k-m} = \begin{cases}1, \quad n=m \\ 0, \quad n \ne m \end{cases}$.\\
+	\textbf{Доказательство:}\\
+		$ \displaystyle x^n = \sum_{k=1}^n S(n,k) [x]_k = \sum_{k=1}^n S(n,k) \sum_{m=1}^k s(k,m)(-1)^{k-m}x^m= \sum_{m=1}^n
+		x^m \sum_{k=1}^n S(n,k) s(k,m) (-1)^{k-m}x^m $\\
+		Сравниваем степень при $x^n$ : если $n = m$, то вторая сумма равна 1, иначе она должна быть равна 0.\\
+	\qedsymbol
+
+\section{Разложение $x^n$ в базисе $[x]_k$. Разложение $[x]_k$ в базисе $x^n$. Связь между числами Стирлинга.}
+	\subsection{Разложение $x^n$ в базисе $[x]_k$.}
+		$\displaystyle  \forall n \in N: \quad x^n = \sum_{k=1}^n S(n,k)[x]_k$.\\
+	\textbf{Доказательство:}\\
+		$[x]_{k+1} = [x]_k\cdot (x-k) = [x]_k\cdot x - [x]_k \cdot k\\
+		\Downarrow\\
+		(*) \quad x\cdot[x]_k = [x]_{k+1} + k\cdot[x]_k$\\
+		Индукция по $n$: $x^1 = [x]_1$ — очевидно\\
+		$ \displaystyle x^n = x\cdot x^{n-1} \overset{ \text{ по индукции } }{=} x \cdot \sum_{k=1}^{n-1}S(n-1,k)[x]_k =
+		\sum_{k=1}^{n-1} S(n-1, k)\cdot [x]_{k+1} + \sum_{k=1}^{n-1} S(n-1, k)\cdot k \cdot [x]_k \overset{ t=k+1 \text{
+		в первой сумме}}{=}\\= \sum_{t=2}^n S(n-1,t-1) [x]_t + \sum_{k=1}^{n-1} S(n-1, k)\cdot k \cdot [x]_k$
+		Первая сумма равна 0 при t=1, вторая сумма равна 0 при k=n. Получается:\\
+		$ \displaystyle \sum_{k=1}^n (S(n-1,k-1) + kS(n-1,k)) [x]_k = \sum_{k=1}^n S(n,k) [x]_k$\\
+	\qedsymbol
+
+	\subsection{Разложение $[x]_k$ в базисе $x^n$.}
+		$ \forall n \in \mathbb N \\
+		\displaystyle  [x]_n = \sum_{k=1}^n (-1)^{n-k} s(n,k) x^k$\\
+	\textbf{Доказательство:}\\
+	Аналогично пункту 10.1\\
+	\qedsymbol
+\subsection{Связь между числами Стирлинга.}
+	См. пункт 9.3
+
+\section{Разбиения чисел. Диаграмма Ферре. Свойства числа разбиений. Равенство числа разбиений на различные слагаемые и на нечетные слагаемые.}
+\subsection{Разбиения чисел.}
+	Разбиение числа $n$ на натуральные слагаемые - это представление $n$ в виде суммы $x_1 + x_2 +\dotsb + x_k,\quad x_i \in \mathbb{Z_+}$
+	Количество упорядоченных разбиений: $\binom{n-1}{k-1}$\\
+	\textbf{Неупорядоченные разбиения:}\\
+	$p(n)$ — количество разбиений числа n на слагаемые\\
+	$p(n,k)$ — количество разбиений числа n на k слагаемых\\
+
+\subsection{Диаграмма Ферре.}
+	Диаграмма Ферре разбиения $n = x_1 + \dotsb + x_k. \quad x_1 \geqslant \dotsc \geqslant x_k$ — $k$ строк точек, в $i$-ой строке $x_i$ точек в первых $x_i$ столбцах.
+
+\subsection{Свойства числа разбиений.}
+	\subsubsection{}
+		$p(0,0) = p(0)$\\
+		$p(n,1) = 1$\\
+		$p(n,n) = 1$\\
+		$p(n,k) = 0; \quad k>n$\\
+	\subsubsection{}
+		\begin{enumerate}
+		\item $p(n,k)$ равно числу разбиений $n$ на натуральные слагаемые, наибольшее из которых равно $k$.
+		\item $p(n+k,k)$ равно числу разбиений $n$ на натуральные слагаемые, не превосходящие $k$.
+		\item Число разбиений $n-k$ ровно на $m-1$ слагаемое, не превосходящих $k$ равно числу разбиений $n-m$ на $k-1$ слагаемое, не превосходящих $m$.
+		\end{enumerate}
+		\textbf{Доказательство:}\\
+		\begin{enumerate}
+			\item Транспозиция диаграммы Ферре.
+			\item Рассмотреть диаграмму без первого столбца.
+			\item Тоже через диаграмму Ферре.
+		\end{enumerate}
+		\qedsymbol
+	\subsubsection{Рекуррентное соотношение}
+			$ \displaystyle \forall n,k \mid 0<k<n\\ p(n,k) = \sum_{i=1}^k p(n-k, i)$\\
+			\textbf{Доказательство:}\\
+				$ (*)\quad (n-k) = (x_1 - 1) + (x_2 - 1) + \ldots  + (x_k - 1)\\
+				y_i = x_i - 1\\
+				n-k = y_1 + y_2 + \ldots + y_k,\quad y_1 \ge y_2 \ge \ldots \ge y_k \ge 0$\\
+				Если $s: y_s>0, y_{s+1}=y_{s+2}=\ldots=y_n = 0$, тогда (*) - это разбиение $n-k$ на $k$ слагаемых, которых у нас
+				$ p(n-k, s)$.\\
+				$ \displaystyle p(n,k) = \sum_{s=1}^k p(n-k, s)$\\
+			\qedsymbol
+
+\subsection{Равенство числа разбиений на различные слагаемые и на нечетные слагаемые.}
+		Количество разбиений $n$ на различные слагаемые равно количеству разбиений $n$ на нечётные слагаемые.\\
+		\textbf{Доказательство:}\\
+			$Q_n$ - множество разбиений $n$ на различные слагаемые, $T_n$ - множество разбиений на нечётные слагаемые. Докажем, что
+			$|Q_n| = |T_n|$, построим для этого биекцию.\\
+			$ f: Q_n \rightarrow T_n\\
+			n = x_1 + x_2 + \ldots + x_k, \quad x_1 > x_2 > \ldots > x_k\\
+			\forall i \quad x_i = 2^{t_i} \cdot y_i,\quad y_i \text{ - нечётно}\\
+			n = \underbrace{y_1 + \ldots + y_1}_{2^{t_1}} + \underbrace{y_2 + \ldots + y_2}_{2^{t_2}} + \ldots + \underbrace{y_k
+			+ \ldots + y_k}_{2^{t_k}}.\\ \\
+		%
+			h: T_n \rightarrow Q_n\\
+			n = \underbrace{y_1 + \ldots + y_1}_{d_1} + \ldots + \underbrace{y_s + \ldots + y_s}_{d_s},\quad y_i \ne y_j, i\ne j
+			.\\ \forall i\quad d_i \text{ - однозначно раскладывается в степени двойки}.\\
+			d_i = 2^{\sigma_{i,1}} + 2^{\sigma_{i,2}} + \ldots + 2^{\sigma_{i,m_i}}; \quad \sigma_{i,1} > \sigma_{i,2} > \ldots
+			> \sigma_{i, m_i}\\
+			n = 2^{\sigma_{1,1}}y_1 + 2^{\sigma_{1,2}}y_1 + \ldots + 2^{\sigma_{i,m_i}} + \ldots + 2^{\sigma_{s,1}} y_s + \ldots
+			+ 2^{\sigma_{s,m_s}}y_s.$\\ \\
+			$h = f^{-1}$ — биекция.\\
+		\qedsymbol
+
+\section{Производящие функции и их свойства. Элементарные производящие функции.}
+\subsection{Производящие функции и их свойства.}
+\subsubsection{Определение}
+	$ \{ a_n \}_{n=0}^\infty $\\
+	$ \displaystyle \sum_{n=0}^\infty a_n t^n = A(t)$ — производящая функция последовательноси $ \{ a_n \}_{n=0}^\infty$.\\
+\subsubsection{Свойства}
+Пусть $A(t)$ и $B(t)$ - производящие функции последовательности $\{ a_n \}_{n=0}^\infty$ и $\{ b_n \}_{n=0}^\infty$ соответственно. Тогда:
+\begin{enumerate}
+	\item $ \alpha A(t) + \beta B(t)$ -  производящая функция. $ \{ \alpha a_n + \beta b_n \}_{n=0}^\infty $.
+	\item $ A(t)\cdot B(t)$ - производящая функция последовательности $ \{ d_n \}_{n=0}^\infty, d_n = a_0b_n + a_1b_{n-1} +  \ldots  + a_nb_0$
+	\item $ t^m A(t)$ - производящая функция. $ \underset{m}{\underbrace{0, \ldots ,0}}, a_0, a_1, \ldots $
+	\item $ A(ct)$ - производящая функция последовательности $\{ c^n a_n \}_{n=0}^\infty $
+	\item $ tA'(t)$ - $\{ n\cdot a_n \}_{n=0}^\infty $
+	\item $ \displaystyle \int_{0}^t \frac{A(t)-a_0}{t}dt$ - производящая функция последовательности $ \displaystyle \left\{ \frac{a_n}{n} \right\}_{n=1}^\infty $
+	\item $ \displaystyle \frac{A(t)}{1-t}$ - производящая функция последовательности $ \displaystyle \left\{ \sum_{i=0}^n a_i \right\}_{n=0}^\infty $
+\end{enumerate}
+
+\subsection{Элементарные производящие функции.}
+	\begin{enumerate}
+	\item $ \displaystyle  (1+T)^\alpha = \sum_{n=0}^\infty \binom{\alpha}{n} t^n$; \quad $\alpha \in \mathbb C$
+	\item $ \displaystyle  e^t = \sum_{n=0}^\infty \frac{t^n}{n!} $
+	\item $ \displaystyle \ln\left(\frac{1}{1-t}\right) = \sum_{n=1}^\infty \frac{t^n}{n} $
+	\item $ \displaystyle  \sin(t) \sum_{n=0}^\infty (-1)^n \frac{f^{2n+1}}{(2n+1)!} $
+	\item $ \displaystyle  \cos(t) \sum_{n=0}^\infty (-1)^n \frac{f^{2n}}{(2n)!} $
+\end{enumerate}
+
+\section{Числа Каталана, производящая функция последовательности чисел Каталана, формула для числа Каталана.}
+\subsection{Числа Каталана}
+	$\{C_n\}_{n=0}^\infty$:
+	$\begin{cases}
+			C_0 = 1\\
+			C_n = C_0 \cdot C_{n-1} + C_1\cdot C_{n-2}+ \ldots +C_{n-1}\cdot C_0
+		\end{cases}$\\
+	$C_n$ — Количество правильных скобочных последовательностей с n парами скобок.\\
+\subsection{Производящая функция последовательности чисел Каталана}
+	$C(t) = \frac{1-\sqrt{1-4t}}{2t}$\\
+	\textbf{Доказательство:}\\
+		$C(t) = \displaystyle\sum_{k=0}^\infty C_k t^k = 1 + \sum_{k=1}^\infty(C_{k-1} \cdot C_0 + \ldots + C_0 \cdot C_{k-1})t^k =
+		1 + t\sum_{k=0}^\infty(C_{k} \cdot C_0 + \ldots + C_0 \cdot C_{k})t^k = 1 + t(C(t))^2$\\
+		$\Downarrow$\\
+		$tC^2(t) - C(t) + 1 = 0$\\
+		$\Downarrow$\\
+		$2tC_{1/2}(t) = 1 \pm \sqrt{1-4t}$\\\\
+		т.к. при $t = 0$ $C(t) = 1$\\
+		$\Downarrow$\\
+		$C(t) = \frac{1 - \sqrt{1-4t}}{2t}$\\
+	\qedsymbol
+\subsection{Формула для числа Каталана}
+	$n$-ое число Каталана: $ \displaystyle C_n = \frac{1}{n+1} \binom{2n}{n}$\\
+	\textbf{Доказательство:}\\
+		$(1-4t)^{\frac{1}{2}} = \displaystyle\sum_{n=0}^\infty\binom{\frac{1}{2}}{n}(-4t)^n =
+		1 + \sum_{n=1}^\infty\frac{(\frac{1}{2})(\frac{1}{2} - 1)\dotsm(\frac{1}{2} - n + 1)}{n!}(-4t)^n =
+		1 + \sum_{n=1}^\infty\frac{\frac{1}{2}(-\frac{1}{2})(-\frac{3}{2})\dotsm(-\frac{2n-3}{2})}{n!}(-4t)^n =
+		1 - \sum_{n=1}^\infty\frac{3 \cdot 5 \dotsm (2n-3)\cdot 2^n \cdot t^n}{n!} =
+		1 - \sum_{n=1}^\infty\frac{3 \cdot 5 \dotsm (2n-3) \cdot 2 \cdot 4 \dotsm (2n-2)}{n!(n-1)!2^{n-1}}2^n t^n =
+		1 - \sum_{n=1}^\infty\frac{(2n-2)!}{n!(n-1)!}2 t^n = \sqrt{1 - 4t}$\\\\
+		$C(t) = \displaystyle\sum_{n=1}^\infty\frac{(2n-2)!}{n!(n-1)!}t^{n-1} =
+		\sum_{n=0}^\infty\frac{(2n)!}{(n+1)!n!}t^n$\\
+		т.о. $C_n = \frac{(2n)!}{(n+1)!n!} = \frac{1}{n+1}\binom{2n}{n}$\\
+	\qedsymbol
+
+\section{Числа Фибоначчи, производящая функция последовательности чисел Фибоначчи, формула для числа Фибоначчи.}
+
+\subsection{Числа Фибоначчи}
+	$\{f_n\}_{n=0}^\infty$:
+	$\begin{cases}
+		f_0 = f_1 = 1\\
+		f_n = f_{n-1} + f_{n-2}; \quad n \geqslant 2
+	\end{cases}$
+
+\subsection{Производящая функция последовательности чисел Фибоначчи}
+	Производящая функция для последовательности чисел Фибоначчи $ \{ f_n \}_{n=0}^\infty$ имеет вид $ \displaystyle F(t) = \frac{1}{1-t-t^2}$\\
+	\textbf{Доказательство:}\\
+		$ \displaystyle  F(t) = \sum_{n=0}^\infty f_n t^n =
+		1+t+\sum_{n=2}^\infty (f_{n-1}+f_{n-2})t^n =
+		1+t+\sum_{n=2}^\infty f_{n-1} t^n + \sum_{n=2}^\infty f_{n-2}t^n =\\=
+		1 + t\sum_{n=1}^\infty f_{n-1}t^{n-1} + t^2\sum_{n=2}^\infty f_{n-2}t^{n-2} =
+		1 + tF(t) + t^2F(t) \Rightarrow F(t) = \frac{1}{1-t-t^2}$\\
+	\qedsymbol
+\subsection{Формула для числа Фибоначчи}
+		$ \displaystyle  \forall n \ge 0 \quad f_n = \frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n+1} - \left(\frac{1-\sqrt{5}}{2}\right)^{n+1}\right)$\\
+		\textbf{Доказательство:}\\
+		$ \displaystyle  t^2 +t-1 = 0\\
+		t_1 = \frac{\sqrt{5}-1}{2}\\
+		t_2 = \frac{-\sqrt{5}-1}{2}$\\
+		
+		$ \displaystyle F(t) = \frac{-1}{t^2 + t - 1} = \frac{-1}{(t-t_1)(t-t_2)} = \frac{1}{\sqrt{5}}\left( \frac{1}{t-t_2} - \frac{1}{t-t_1} \right) =
+		\frac{1}{\sqrt{5}t_1}\left(\frac{1}{1-\frac{t}{t_1}}\right) - \frac{1}{\sqrt{5}t_2}\left(\frac{1}{1-\frac{t}{t_2}}\right) =\\=$
+		$ \displaystyle \frac{1}{\sqrt{5}t_1}\left(1 + \frac{t}{t_1} + \frac{t^2}{t_1^2} +  \ldots \right) -
+		\frac{1}{\sqrt{5}t_2}\left(1 + \frac{t}{t_2}+ \frac{t^2}{t_2^2} +  \ldots \right) $\\
+		
+		$ \displaystyle f_n = \frac{1}{\sqrt{5}}\left(\frac{1}{t_1^{n+1}} - \frac{1}{t_2^{n+1}}\right) =
+		\frac{1}{\sqrt{5}}\cdot \frac{t_2^{n+1} - t_1^{n+1}}{t_1^{n+1}\cdot t_2^{n+1}} =
+		\frac{(-1)^{n+1}}{\sqrt{5}}(t_2^{n+1} - t_1^{n+1}) = \\ =
+		\frac{(-1)^{n+1}}{\sqrt{5}}\left( \left(\frac{-\sqrt{5}-1}{2}\right)^{n+1} - \left(\frac{\sqrt{5}-1}{2}\right)^{n+1} \right) =
+		\frac{1}{\sqrt{5}}\left( \left(\frac{\sqrt{5}+1}{2}\right)^{n+1} - \left(\frac{1-\sqrt{5}}{2}\right)^{n+1} \right) $\\
+		\qedsymbol
+
+\section{Линейная однородная возвратная последовательность, ее производящая функция. Общее решение линейного однородного рекуррентного соотношения.}
+\subsection{Линейная однородная возвратная последовательность}
+	Линейное однородное рекуррентное соотношение порядка $k$ для последовательности $\{ a_n \}_{n=0}^\infty$ выглядит:\\
+	$(*) \quad a_{n+k} + p_1 a_{n+k-1} +  \ldots  + p_k a_n = 0, \quad p_k \ne 0$.\\
+	Если последовательность $\{ a_n \}_{n=0}^\infty$ удовлетворяет $(*)\, \forall n$ она наз-ся однородной возвратной последовательностью порядка $k$.\\
+\subsection{Производящая функция однородной возвратной последовательности}
+	Если последовательность $\{ a_n \}_{n=0}^\infty$ удовлетворяет (*) $\forall n, \, n\ge 0$, то производящая функция $A(t)$ этой последовательности имеет вид:\\
+	$ \displaystyle A(t) = \frac{C(t)}{K(t)}$, где $ K(t) = 1 + p_1 t + p_2 t^2 +  \ldots + p_k t^k$, $C(t)$ - многочлен степени, не превосходящей $k-1$.
+	\textbf{Доказательство:}\\
+			Пусть $ \displaystyle A(t) = \sum_{n=0}^\infty a_n t^n$.\\
+		\begin{eqnarray*}
+			C(t) = A(t)\cdot K(t) = a_0 + a_1t + a_2t^2 +  &\ldots&  + a_kt^k + a_{k+1}t^{k+1} + \\
+			+ \ldots  + a_0 p_1t + a_1 p_1 t^2 + &\ldots&  + a_{k-1}p_1 t^k + a_kp_1t^{k+1} + \\
+			+ \ldots  + a_0p_2t^2 +  &\ldots&  + a_{k-2}p_2t^k + a_{k-1}p_2t^{k+1} + \\
+			+ &\ldots&  + a_0 p_k t^k + a_1 p_k t^{k+1} +  \ldots
+		\end{eqnarray*}
+		(Все столбцы после первого многоточия будут зануляться, а до первого в сумме образуют $C(t)$.)\\
+	\qedsymbol
+
+\subsection{Общее решение линейного однородного рекуррентного соотношения.}
+	$ f(t) = t^k + p_1 t^{k-1} +  \ldots  + p_k$ — характеристический многочлен для (*).\\
+	$ f(t) = (t-\lambda_1)^{r_1} \cdot  \ldots  \cdot ( t-\lambda_s)^{r_s}, \quad \lambda_i \ne \lambda_j,i\ne j, \sum r_i = k$\\
+
+	Пусть $ \{ a_n \}_{n=0}^\infty$ - линейная однородная возвратная последовательность удовлетворяющая (*). Тогда\\
+	$ \displaystyle a_n = \sum_{i=1}^s Q_i(n) \lambda_i^n$, где $\lambda_1, \ldots \lambda_s$ — корни характеристического многчлена кратного $r_1, \ldots ,r_s$ соответственно.\\
+	$ Q_i(t)$ - многочлен степени, не превосходящей $r_i-1$, который находится из начальных условий.\\
+	\textbf{Доказательство:}\\
+	$ \displaystyle  K(t) = t^k f\left(\frac{1}{t}\right) = t^k \prod_{i=1}^s \left(\frac{1}{t} - \lambda_i\right)^{r_i} 
+	= \prod_{i=1}^s \left(\frac{1}{t} - t\lambda_i\right)^{r_i} $\\
+	$ \displaystyle  A(t) = \frac{C(t)}{ \displaystyle \prod_{i=1}^s (1 - t\lambda_i)^{r_i}} =
+	\sum_{i=1}^s \sum_{j=1}^{r_i} \frac{B_{ij}}{ (1 - t \lambda_i)^j }$\\
+	$  \displaystyle (1 - t\lambda_i)^{-j} = 1 + \sum_{n=1}^\infty \binom{-j}{n} (-\lambda_i t)^n =
+	1 + \sum_{n=1}^\infty \frac{(-j)(-j-1) \ldots (-j-n+1)}{n!} (-1)^n \lambda_i^n t^n =\\=
+	1 + \sum_{n=1}^\infty \frac{j(j+1) \ldots (j+n-1)}{n!} \lambda_i^n t^n =
+	1 + \sum_{n=1}^\infty \binom{j+n-1}{n} \lambda_i^n t^n = 1 + \sum_{n=1}^\infty \binom{j+n-1}{j-1} \lambda_i^n t^n$\\
+	$ \displaystyle A(t) = \sum_{i=1}^s \sum_{j=1}^{r_i} B_{ij}\left( 1 + \sum_{n=1}^\infty \binom{j+n-1}{j-1} \lambda_i^n t^n \right) =
+	a_0 + \sum_{n=1}^\infty \left( \sum_{j=1}^{r_i} \lambda_i^n \sum_{i=1}^{s} B_{ij} \binom{j+n-1}{j-1} \right) t^n$.\\
+	При этом $\binom{j+n-1}{j-1}$ - многолчен степени, не превышающей $n-j+1$.\\
+	\qedsymbol
+
+\section{Формула Стирлинга. Асимптотика биномиальных коэффициентов.}
+\subsection{Формула Стирлинга}
+	$n! \underset{n\to\infty}{\backsim} \sqrt{2\pi n}(\frac{n}{e})^n$\\
+	\textbf{Доказательство:}\\
+		Без доказательства\\
+	\qedsymbol
+\subsection{Асимптотика биномиальных коэффициентов.}
+\begin{enumerate}
+	\item $k^2 = o(n) \Rightarrow C_n^k \underset{n\to\infty}{\backsim} \frac{n^k}{k!}$
+	\item $k^3 = o(n^2) \Rightarrow C_n^k \underset{n\to\infty}{\backsim} \frac{n^k}{k!}e^{\frac{-k(k-1)}{2n}} \overset{\text{т.к. $\frac{k}{2n} \to 0$}}{\backsim} \frac{n^k}{k!}e^{-\frac{k^2}{2n}}$
+\end{enumerate}
+	\textbf{Доказательство:}\\
+		$C_n^k = \frac{n(n-1)\dotsc(n-k+1)}{k!} \leqslant \frac{n^k}{k!}$\\
+		$C_n^k = \frac{n(n-1)\dotsc(n-k+1)}{k!} = \frac{n^k}{k!}(1-\frac{1}{n})(1-\frac{2}{n})\dotsm(1-\frac{k-1}{n}) = 
+		\frac{n^k}{k!}e^{\ln(1-\frac{1}{n}) + \ln(1 - \frac{2}{n}) + \dotsb + \ln(1 - \frac{k-1}{n})} =\\
+		\frac{n^k}{k!}e^{-\frac{1}{n} + O(\frac{1}{2n^2}) - \frac{2}{n} + O(\frac{4}{2n^2}) + \dotsb + -\frac{k-1}{n} + O(\frac{(k-1)^2}{2n^2})} =
+		\frac{n^k}{k!}e^{\frac{k(k-1)}{2n} + O(\frac{k^3}{n^2})}$\\\\
+
+		Расмотрим сумму:\\
+		$\frac{1}{n^2} + \frac{4}{n^2} + \dotsb + \frac{(k-1)^2}{n^2} \leqslant \frac{k(k-1)^2}{n^2}$ \quad (все слагаемые заменили на последнее)\\
+		$\frac{1}{n^2} + \frac{4}{n^2} + \dotsb + \frac{(k-1)^2}{n^2} \geqslant \frac{(\frac{k}{2})^2}{n^2}\frac{k}{2}$ \quad (половину слагаемых заменили на $\frac{(\frac{k}{2})^2}{n^2})$\\\\
+		Из доказанного следуют оба пункта\\
+	\qedsymbol
+
+
+\end{document}
