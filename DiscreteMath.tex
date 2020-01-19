@@ -562,7 +562,7 @@
 \subsection{Лемма о рукопожатиях.}
 	Пусть $G$ - произвольный граф, тогда $ \displaystyle \sum_{v \in VG}  \operatorname{deg}_G(v) = 2|EG|$.\\
 	\textbf{Доказательство:}\\
-		Возьмем пустой граф. Сумма степеней вершин такого графа равна нулю. При добавлении ребра, связывающего любые две вершины, сумма всех степеней увеличивается на 2 единицы. Таким образом, сумма всех степеней вершин чётна и равна удвоенному числу рёбер.\\ 
+		Возьмем пустой граф. Сумма степеней вершин такого графа равна нулю. При добавлении ребра, связывающего любые две вершины, сумма всех степеней увеличивается на 2. Таким образом, сумма всех степеней вершин чётна и равна удвоенному числу рёбер.\\ 
 	\qedsymbol
 \subsection{Орграф, связный, сильно связный орграф.}
 	Орграф - это пара $G=(V,D)$, где $V$ - непустое множество, а $D \subseteq V \times V$. Элементы $V$ - вершины, элементы $D$ - дуги.\\
@@ -717,7 +717,7 @@
 			$(a_1,\dotsc,a_{n-1})$ — код Прюфера\\
 		\end{enumerate}
 	\subsection{Теорема Прюфера}
-		(не знаю, нужна ли она в этом билете)\\
+		(не знаю, нужна ли она в этом вопросе)\\
 		Если $a = (a_1,\dotsc,a_{n-1}) \in \{1,2,\dotsc,n\}^{n-1}$, $a_{n-1} = n$, то $\exists!$ помеченное дерево T, для которого a — код Прюфера.\\
 		\textbf{Доказательство:}\\
 			Построим $b = (b_1,\dotsc,b_{n-1})$\\
@@ -906,7 +906,7 @@
 		$ \displaystyle \ge \sum_{v \in N(x)}( \operatorname{deg}_G(v)+1)^{-1} + (1+ \operatorname{deg}_G(x))^{-1} + \sum_{v \in VG'}(1 +  \operatorname{deg}_G(v))^{-1} = \sum_{v\in VG}(1+ \operatorname{deg}_G(v))^{-1}$
 	\end{proof}
 \subsection{Вершинное покрытие.}
-	Вершина покрывет вёбра, инциндентные ей. Мно-во вершин, покрывающих все рёбра - \textbf{покрытие} (вершинное покрытие).\\
+	Вершина покрывет рёбра, инциндентные ей. Мно-во вершин, покрывающих все рёбра - \textbf{покрытие} (вершинное покрытие).\\
 	Покрытие $W$ - тупиковое (минимальное), если $\forall V \subset W, \, V$ - не покрытие. Покрытие наименьшей мощности - наименьшее покрытие и его мощность
 	Обозначается $\beta_0(G)$ - число покрытия графа $G$.
 \subsection{Связь чисел покрытия и независимости.}
@@ -1333,7 +1333,7 @@ $A^T$ & 0 \\
 \section{Правильная раскраска ребер графа. Хроматический индекс. Теорема Кёнига о хроматическом индексе двудольных графов.}
 \subsection{Правильная раскраска ребер графа.}
 	$\varphi: EG \to \{c_1,\dotsc,c_t\}$ — раскраска рёбер в $t$ цветов\\
-	$\phi$ 	— правильная рёберная раскраска, если $e$ и $h$ смежны $\Rightarrow$ $\phi(e) \neq \phi(h)$\\
+	$\varphi$ 	— правильная рёберная раскраска, если $e$ и $h$ смежны $\Rightarrow$ $\varphi(e) \neq \varphi(h)$\\
 \subsection{Хроматический индекс.}
 	$G$ — рёберно $t$-хроматический, если $G$ рёберно $t$-раскрашиваемый и не является рёберно\\$(t-1)$-раскрашиваемым.\\
 	$G$ — рёберно $t$-хроматический $\Rightarrow$ t — рёберное хроматическое число (хроматический индекс) $\chi'(G)$
@@ -1353,7 +1353,7 @@ $A^T$ & 0 \\
 \section{Правильная раскраска ребер графа. Хроматический индекс. Теорема о хроматическом индексе полного графа.}
 	\subsection{Правильная раскраска ребер графа.}
 	$\varphi: EG \to \{c_1,\dotsc,c_t\}$ — раскраска рёбер в $t$ цветов\\
-	$\phi$ 	— правильная рёберная раскраска, если $e$ и $h$ смежны $\Rightarrow$ $\phi(e) \neq \phi(h)$\\
+	$\varphi$ 	— правильная рёберная раскраска, если $e$ и $h$ смежны $\Rightarrow$ $\varphi(e) \neq \varphi(h)$\\
 \subsection{Хроматический индекс.}
 	$G$ — рёберно $t$-хроматический, если $G$ рёберно $t$-раскрашиваемый и не является рёберно\\$(t-1)$-раскрашиваемым.\\
 	$G$ — рёберно $t$-хроматический $\Rightarrow$ t — рёберное хроматическое число (хроматический индекс) $\chi'(G)$
@@ -1407,5 +1407,146 @@ $A^T$ & 0 \\
 	\qedsymbol
 \section{Теорема о разложении функций по переменным. Совершенная дизъюнктивная нормальная форма. Совершенная конъюнктивная нормальная форма. Двойственная функция. Принцип двойственности.}
 \subsection{Теорема о разложении функций по переменным.}
-	
+	Пусть $f(x_1,\dotsc,x_n) \in P_2, \quad 1 \leqslant k \leqslant n$\\
+	Тогда $f(x_1,\dotsc,x_n) = \displaystyle\bigvee_{\sigma_1,\dotsc,\sigma_k \in \{0,1\}^k}x_1^{\sigma_1}\dotsm x_k^{\sigma_k} f(\sigma_1, \dotsc, \sigma_k, x_{k+1}, \dotsc, x_{n})$ (*)\\
+	\textbf{Доказательство:}\\
+		Если подставить конкретные значения, то в правой части останется только одна конъюнкция, и оставшаяся конъюнкция совпадёт с левой частью\\ 
+	\qedsymbol
+\subsection{Совершенная дизъюнктивная нормальная форма.}
+	Разложение ф-ции отличной от $0$ вида (*) при $k=n$ называется СДНФ (совершенная дизъюнктивная нормальная форма)
+\subsection{Совершенная конъюнктивная нормальная форма.}
+	\includegraphics[width=400pt]{18}
+\subsection{Двойственная функция.}
+	\includegraphics[width=400pt]{19}
+\subsection{Принцип двойственности.}
+	\includegraphics[width=400pt]{20}
+
+\section{Замкнутое, полное множества булевых функций. Теорема о полноте двух систем.}
+\subsection{Замкнутое, полное множества булевых функций.}
+	\includegraphics[width=400pt]{21}
+\subsection{Теорема о полноте двух систем.}
+	$\Omega_1, \Omega_2 \subseteq P_2$\\
+	$\Omega_1$ — полна, и $\forall$ ф-я из $\Omega_1$ выражается ф-лой над $\Omega_2$, тогда $\Omega_2$ — полна\\
+	\textbf{Доказательство:}\\
+		$[\Omega_1] = P_2 \quad \Omega_1 \subset [\Omega_2]$\\
+		$P_2 = [\Omega_1] \subseteq [[\Omega_2]] = [\Omega_2] \subseteq P_2$\\
+		$\Downarrow$\\
+		$[\Omega_2] = P_2$\\
+	\qedsymbol
+
+\section{Полином Жегалкина. Теорема Жегалкина. Способы построения полинома Жегалкина.}
+\subsection{Полином Жегалкина.}
+	\includegraphics[width=500pt]{22}
+\subsection{Теорема Жегалкина.}
+	\includegraphics[width=550pt]{23}
+\subsection{Способы построения полинома Жегалкина.}
+	\includegraphics[width=550pt]{24}
+
+\section{Основные замкнутые классы булевых функций. Предполные классы.}
+\subsection{Основные замкнутые классы булевых функций.}
+	\includegraphics[width=370pt]{25}\\
+	$T_0, T_1, S, L, M$ — замкнуты\\
+	\textbf{Доказательство:}\\
+		1. $f_0, \dotsc, f_m \in T_0$\\
+		Рассм. $F(0,\dotsc,0) = f_0(f_1(0,\dotsc,0),\dotsc f_m(0,\dotsc,0)) = f_0(0,\dotsc,0) = 0$\\
+		2. $f_0, \dotsc, f_m \in T_1$\\
+		Аналогично\\
+		3. $f_0, \dotsc, f_m \in S$\\
+		$F^*(x_1,\dotsc,x_n) \underset{\text{принцип двойственности}}{=} f_0^*(f_1^*(x_1,\dotsc,x_n),\dotsc f_m^*(x_1,\dotsc,x_n)) = f_0(f_1(x_1,\dotsc,x_n),\dotsc f_m(x_1,\dotsc,x_n)) = F(x_1,\dotsc,x_n)$\\
+		4. $f_0, \dotsc, f_m \in L$\\
+		$L = [\{\oplus, 1\}]$ $\Rightarrow$ L замкнуто\\
+		5. $f_0, \dotsc, f_m \in M$\\
+		$(\alpha_1,\dotsc,\alpha_n) \leqslant (\beta_1,\dotsc,\beta_n) \quad 1 \leqslant i \leqslant m$\\
+		$\Downarrow$\\
+		$(f_1(\alpha_1,\dotsc,\alpha_n),\dotsc,f_m(\alpha_1,\dotsc,\alpha_n)) \leqslant (f_1(\beta_1,\dotsc,\beta_n),\dotsc,f_m(\beta_1,\dotsc,\beta_n))$\\
+		$\Downarrow$ ($f_0 \in M$)\\
+		$f_0(f_1(\alpha_1,\dotsc,\alpha_n),\dotsc,f_m(\alpha_1,\dotsc,\alpha_n)) \leqslant f_0(f_1(\beta_1,\dotsc,\beta_n),\dotsc,f_m(\beta_1,\dotsc,\beta_n))$\\
+		$\Downarrow$\\
+		$F(\alpha_1,\dotsc,\alpha_n) \leqslant F(\beta_1,\dotsc,\beta_n)$\\
+	\qedsymbol
+\subsection{Предполные классы.}
+	\includegraphics[width=250pt]{26}
+\section{Теорема Поста.}
+Леммы, необходимые для доказательства теоремы:
+\subsection{Лемма о несамодвойственной ф-ции}
+	$f \notin S$ $\Leftrightarrow$ $0,1 \in [\{f, \bar{x}\}]$\\
+	\textbf{Доказательство:}\\
+		$\Rightarrow$) $f \in S$ $\Leftrightarrow$ $\forall$ ($\alpha_1,\dotsc,\alpha_n$) $\quad$ $f(\alpha_1,\dotsc,\alpha_n) = \overline{f(\overline{\alpha_1},\dotsc,\overline{\alpha_n})}$\\
+		$g(x) = f(x^{\alpha_1},\dotsc,x^{\alpha_n})$\\
+		$g(0) = f(0^{\alpha_1},\dotsc,0^{\alpha_n}) = f(\overline{\alpha_1},\dotsc,\overline{\alpha_n}) = \*f(\alpha_1,\dotsc,\alpha_n) = f(1^{\alpha_1},\dotsc,1^{\alpha_n}) = g(1)$\\
+		$\Downarrow$\\
+		$g(x)$	— const\\
+		$\Leftarrow$) Дано $0,1 \in [\{f, \bar{x}\}]$\\
+		От противного\\
+		Пусть $f \in S$ $\Rightarrow$ $\{f, \bar{x}\} \subseteq S$ $\overset{\text{S — замкнут}}{\Rightarrow}$ $[\{f, \bar{x}\}] \subseteq S$\\
+		Но $0,1 \notin S$\\
+		Противоречие\\
+	\qedsymbol
+\subsection{Лемма о немонотонной ф-ции}
+	$f \notin M$ $\Leftrightarrow$ $\bar{x} \in [\{f, 0,1\}]$\\
+	\textbf{Доказательство:}\\
+		$\Leftarrow$) Аналогично прошлой лемме\\
+		$\Rightarrow$)
+		Пусть $f(x_1,\dotsc,x_n) \notin M$\\
+		$\Downarrow$\\
+		$\exists (\alpha_1,\dotsc,\alpha_n) \leqslant (\beta_1,\dotsc,\beta_n)$ т.ч.$f(\alpha_1,\dotsc,\alpha_n) > f(\beta_1,\dotsc,\beta_n)$\\
+		$\Downarrow$\\
+		$f(\alpha_1,\dotsc,\alpha_n) = 1$\\
+		$f(\beta_1,\dotsc,\beta_n) = 0$\\
+		Рассм. $g(x)$ получаемая из $f(x_1,\dotsc,x_n)$ подставлением на место $x_i$:
+		$\begin{cases}
+			0; \text{ если } \alpha_i = \beta_i = 0\\
+			1; \text{ если } \alpha_i = \beta_i = 1\\
+			x_i; \text{ если } \alpha_i \neq \beta_i = 1 \Leftrightarrow \alpha_1=0, \beta_i=1
+		\end{cases}$\\
+		$g(0) = f(\alpha_1,\dotsc,\alpha_n) = 1$\\
+		$g(1) = f(\beta_1,\dotsc,\beta_n) = 0$\\
+		$\Downarrow$\\
+		$g(x) = \overline{x}$\\
+	\qedsymbol
+\subsection{Лемма о нелинейной ф-ции}
+	$f \notin L$ $\Leftrightarrow$ $x \& y \in [\{f, \overline{x},0, 1\}]$\\
+	\textbf{Доказательство:}\\
+		$\Leftarrow$) Аналогично прошлой лемме\\
+		$\Rightarrow$)
+		Пусть $f(x_1,\dotsc,x_n) \notin L$\\
+		$K = x_1\dotsm x_r$\\
+		Если что, переменные перенумеруем. Но выберем такое $r$, что
+		у $f(x_1,\dotsc,x_r,0,\dotsc,0)$ в полиноме Жегалкина ровно одно слагаемое имеет ранг больше 1\\
+		$f(x_1,x_2,1\dotsc,1,0,\dotsc,0) = x_1x_2 \oplus \alpha x_1 \oplus \beta x_2 \oplus \gamma$\\
+		$f(x_1 \oplus \beta,x_2 \oplus \alpha,1\dotsc,1,0,\dotsc,0) = (x_1 \oplus \beta)(x_2 \oplus \alpha) \oplus \alpha (x_1 \oplus \beta) \oplus \beta (x_2 \oplus \alpha) \oplus \gamma = x_1x_2 \oplus \alpha \beta \oplus \gamma \in \{x_1x_2, \overline{x_1x_2}\}$\\
+		Если получили $\overline{x_1x_2}$, то $\overline{\overline{x_1x_2}} = x_1x_2$\\
+	\qedsymbol
+\subsection{Теорема Поста.}
+	Сист. б.ф. $\Omega \subseteq P_2$ полна $\Leftrightarrow$ она не лежит целиком ни в из классов $T_0, T_1, S, L, M$\\
+	\textbf{Доказательство:}\\
+		$\Rightarrow$) $\Omega$ — полна $\Rightarrow$ функциями из $\Omega$ можно выразить штрих Шеффера.\\
+		Т. к. классы $T_0, T_1, L, S, M$ замкнуты и штрих шеффера не принадлежит ни одному из этих классов. То Штрих шеффера выражается функциями не из этих классов $\Rightarrow$ $\Omega$ не может лежать целиком ни в одном из этих классов\\
+		$\Leftarrow$) $\Omega \nsubseteq T_0 \Rightarrow \exists f_0 \in \Omega \setminus T_0$\\
+		аналогично:\\
+		$\exists f_1 \in \Omega \setminus T_1$\\
+		$\exists f_S \in \Omega \setminus S$\\
+		$\exists f_L \in \Omega \setminus L$\\
+		$\exists f_M \in \Omega \setminus M$\\
+		Рассм. $\Omega' = \{f_0, f_1, f_S, f_L, f_M\}$\\
+		Хотим показать, что $x \& y, \overline{x} \in [\Omega']$\\
+		Шаг 1. Покажем что $0,1,\overline{x} \in [\Omega']$\\
+		$\varphi_1(x) = f_0(x,\dotsc,x)$\\
+		$\varphi_2(x) = f_1(x,\dotsc,x)$\\
+		$\varphi_1(0) = f_0(0,\dotsc,0) = 1 \Rightarrow \varphi_1 \in \{1, \overline{x}\}$\\
+		$\varphi_2(1) = f_1(1,\dotsc,1) = 0 \Rightarrow \varphi_2 \in \{0, \overline{x}\}$\\
+		Если $\varphi_1(x) \neq \overline{x}$ и $\varphi_2(x) \neq \overline{x}$. Тогда $\varphi_1(x) = 1, \varphi_2(x) = 0$\\
+		Тогда по лемме о немонотонной ф-ции $\overline{x} \in [f_m, 0, 1]$\\
+		В противном случае $\overline{x} \in \{\varphi_1, \varphi_2\}$\\
+		Т.о. $\overline{x}$ получили\\
+		По лемме о несамодвойственной ф-ции $0,1 \in [\{f_s, \overline{x}\}]$\\
+		Показали\\
+		Шаг 2\\
+		По лемме о нелинейной ф-ции\\
+		$x_1, x_2 \in [\{f_L, 0, 1, \overline{x}\}]$\\
+		В итоге мы получили\\
+		$x \& y \in [\Omega']$\\
+		$\Downarrow$ по теореме о полноте двух систем\\
+		$\Omega' полна$ $\Rightarrow$ $\Omega$ полна\\
+	\qedsymbol
 \end{document}
