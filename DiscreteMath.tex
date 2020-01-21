@@ -1549,4 +1549,117 @@ $A^T$ & 0 \\
 		$\Downarrow$ по теореме о полноте двух систем\\
 		$\Omega' полна$ $\Rightarrow$ $\Omega$ полна\\
 	\qedsymbol
+
+\section{Минимизация ДНФ. Способы построения сокращенной ДНФ.}
+\subsection{Минимизация ДНФ.}
+\subsubsection{Элементарная конъюнкция}
+	элементарная конъюнкция ранаг r\\
+	$K = x_{i_1}^{\sigma_{i_1}} \dotsb x_{i_r}^{\sigma_{i_r}}$\\
+	Эл. конъюнкция ранга $0$ 	— $K = 1$ 
+\subsubsection{ДНФ}
+	$K_1 \vee \dotsb \vee K_s$; $K_i \neq K_j$ $i \neq j$\\
+	$\forall 1 \leqslant i \leqslant s$ $K_i$ — элементарная конъюнкция
+\subsection{Мин. ДНФ}
+	ДНФ $D$ наз-ся минимальным ДНФ ф-ции $f$, если она имеет мин. сумму рангов вход. в неё эл. конъюнкций среди всех ДНФ реализующих ф-цию $f$
+\subsection{Теорема}
+	Сокращённая ДНФ монотонрой ф-ции $f$ не содержит отрицаний переменных и явл. её ед. мин. ДНФ\\
+	\textbf{Доказательство:}\\
+		$f \in M$\\
+		$f = K_1 \vee \dotsb \vee K_s$ — сокр. ДНФ\\
+		$K_i = x_{i_1}x_{i_2}\dotsm x_{i_t}\overline{x_{i_t + 1}}\dotsm \overline{x_{i_r}}$\\
+		$f$ принимает значение 1 на всех кортежах (наборах):
+		$(\alpha_1,\dotsc,\alpha_n): \alpha_{i_1} = \alpha_{i_2} = \dotsc = \alpha_{i_t} = 1$\\
+		$\alpha_{i_t + 1} = \dotsc = \alpha_{i_r} = 1$\\
+		из монотонности\\
+		$\Rightarrow$ и на всех кортежах $(\beta_1,\dotsc,\beta_n)$: $\beta_{i_1} = \dotsc, = \beta_{i_t} = 1$\\
+		$K' = x_{i_1}\dotsm x_{i_t}$ — импликанта ф-ции\\
+		$K < K' \leqslant f$ $\Rightarrow$ K не простая\\
+		Противоречие\\
+	\qedsymbol
+\subsection{Способы построения сокращенной ДНФ.}
+	3 операции:
+	\begin{enumerate}
+		\item склеивание $xK \vee \overline{x}K = K$
+		\item поглощение $K_1 \vee K_1K2 = K_1$
+		\item обощ. склеивание $xK_1 \vee \overline{x}K_2 = xK_1 \vee \overline{x}K_2 \vee K_1K_2$
+	\end{enumerate}
+	Алгоритмы:
+	\textbf{метод Нельсона} (из КНФ)\\
+	раскрываем все скобки, поглощение, убираем дублирование\\
+	\textbf{Метод Квайна} (из СДНФ)\\
+	все пары проверяем на склейк $\Rightarrow$ все пары рёбер проверяем на склейку $\Rightarrow$ получаем грани размерности 2 и т.д. пока можем $\Rightarrow$ Поглощение\\
+	\textbf{Метод Блейка}\\
+	Пока можем обобщ. склеивание, потом поглощение\\
+
+\section{Схема из функциональных элементов. Система функций, реализуемая схемой из функциональных элементов.}
+\subsection{Схема из функциональных элементов.}
+	СФЭ в базисе $\{\&, \vee, \overline{x}\}$ — орграф без контуров (ор. циклов) $G = (V, A)$; $V = V_1 \sqcup V_2 \sqcup V_3$\\
+	$V_1 = \{v \in V | \deg v = 0\}$\\
+	$V_2 = \{v \in V | \deg v = 1\}$\\
+	$V_3 = \{v \in V | \deg v = 2\}$\\
+	$\forall v \in V_1$ приписана переменна $x_i$; разным — разные\\
+	$\forall v \in V_2$ приписано $\overline{x}$\\
+	$\forall v \in V_3$ приписано $\vee$ или $\&$\\
+	Выделено $V^* \subseteq V$\\
+	$V_1$ — выходы схемы; $V_2 \cup V_3$ — функциональные элементы\\
+	$v \in V_2$ — инвертор\\
+	$v \in V_3$ — конъюнктор или дизъюнктор\\
+	$v \in V^*$ — выход схемы\\
+	нумерация вершин — монотонная, если $\forall$ $\overrightarrow{\mkern -3mu xy\mkern 3mu} \in A$ номер $x$ меньше номера $y$\\
+	упорядовачиваем монотонно вершины схемы\\
+	$v_1,v_2,\dotsc,v_t \quad v_i \in V_1 \Rightarrow$ $v_i$ $\leftrightarrow$ переменная\\
+	$v_i \in V_2 \Rightarrow$ есть дуга из $y$ в $v_i$\\
+	$y \leftrightarrow f$ $\Rightarrow$ $v_i \leftrightarrow \overline{f}$\\
+	$v_i \in V_3$ $\Rightarrow$ есть две дуги $\overrightarrow{\mkern -3mu yv_i\mkern 3mu}, \overrightarrow{\mkern -3mu zv_i\mkern 3mu}$\\
+	$y \leftrightarrow f$, $z \leftrightarrow g$\\
+	$v_i \leftrightarrow$ либо $f \& g$, либо $f \vee g$\\
+\subsection{Система функций, реализуемая схемой из функциональных элементов.}
+	СФЭ реализует систему б. ф., сопоставляет $x$ выходам схемы\\
+	Булевые ф-ции, реализуемые в вершинах схемы не зависят от выбора монотонной нумерации\\
+	\textbf{Доказательство:}\\
+		инд. по числу функциональн. элементов в графе $G$\\
+		$n = 1$\\
+		1 функциональный элемент реализует 1-ну ф-ю независимо от нумерации\\
+		$n > 1$\\
+		$S_1, S_2$ — разные нумерации\\
+		Возьмём 1-ый функциональный элемент из $S_1$. Вместо него вставим новый вход $y$. По инд. предположению нумерации $S_1$ и $S_2$ реализуют одинаковые булевые ф-ции. И если обратно вернуть вместо $y$ функциональный элемент, ничего не изменится\\
+	\qedsymbol
+
+\section{Сложность схемы из функциональных элементов. Реализация сумматора. Функция Шеннона для СФЭ. Метод Шеннона.}
+\subsection{Сложность схемы из функциональных элементов.}
+	$L(S)$ — сложность схемы, число функциональных элементов в ней\\
+\subsection{Реализация сумматора.}
+	$l_n = x_1 \oplus \dotsb x_n$\\
+	$L(l_n) \leqslant 4n - 4$\\
+	\textbf{Доказательство:}\\
+	$l_2 = x_1 \oplus x_2 = (x_1 \vee x_2)(\overline{x_1x_2}) \*= (x_1 \vee x_2)(\overline{x_1} \vee \overline{x_2}) \*= x_1\overline{x_2} \vee \overline{x_1}x_2$\\
+	$l_3 = l_2 \oplus x_3$\\
+	$\dotsc$\\
+	$\dotsc$\\
+	$l_n = l_{n-1} \oplus x_n$\\
+	\includegraphics[height=150pt]{27} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \includegraphics[height=150pt]{28}\\
+\subsection{Функция Шеннона для СФЭ.}
+	$L(n) = \underset{f(x_1,\dotsc,x_n) \in P_2}{\max}(L(f))$ — ф-я Шеннона
+\subsection{Метод Шеннона.}
+	$L(n) \leqslant 8 \cdot \frac{2^n}{n}(1 + O(1)) \quad n \to \infty$\\
+	\textbf{Доказательство:}\\
+
+	\qedsymbol
+
+\section{Лемма о нижней оценке сложности схем.}
+\subsection{Лемма}
+	$N(k, n) \leqslant (32(n+k))^{n+k+3}$
+	\textbf{Доказательство:}\\
+
+	\qedsymbol
+\subsection{Теорема}
+	Для достаточно больших $n$\\
+	L(n) > $\frac{2^n}{n}$ и доля тех, ф-ций $f(x_1,\dotsc,x_n)$, для которых $L(f) \leqslant \frac{2^n}{n}$ стремится к $0$ при $n \to \infty$\\
+	\textbf{Доказательство:}\\
+		Надо показать:\\
+		$\frac{N(\frac{2^n}{n}, n)}{2^{2^n}} \underset{n \to \infty}{\to} 0$\\
+		Из доказанной леммы\\
+		$\log_2 N(\frac{2^n}{n}, n) - 2^n \underset{n \to \infty}{\to} 0$\\
+		$(n+\frac{2^n}{n}+3)\log_2(32(n+\frac{2^n}{n})) - 2^n \leqslant (n+\frac{2^n}{n}+3)(5 + \log_2(\frac{2^{n+2}}{n})) - 2^n = (n+\frac{2^n}{n}+3)(7 + n - \log_2n) - 2^n = 7n + n^2 - n\log_2n + 7 \cdot \frac{2^n}{n} + 2^n - \frac{2^n}{n} \log_2n + 21 + 3n - 3\log_2n - 2^n \underset{n \to \infty}{\to} -\infty$\\
+	\qedsymbol
 \end{document}
