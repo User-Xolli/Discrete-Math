@@ -14,8 +14,6 @@ https://vk.com/doc124894118_529139217?hash=56a1f587a6235dcd2b&dl=cec5dcc35727464
 
 http://mk.cs.msu.ru/images/a/a5/Gip-asp-l5-selezn.pdf
 
-http://mk.cs.msu.ru/images/a/a5/Gip-asp-l5-selezn.pdf
-
 http://mk.cs.msu.ru/images/3/35/Dmus8-selezn.pdf
 
 https://docviewer.yandex.ru/view/167829078/?page=3&*=%2FYprsqmMTOoRaumXSRekt8xWC7p7InVybCI6InlhLWRpc2stcHVibGljOi8vRmNreGFVYytQN1BJWFZSbWJ6a3B4RFNaNzN4SkF6OXlxLzV5UUx2STNHST06L9Cd0JPQo1%2FQpNCY0KIv0JrRg9GA0YHRiy%2FQlNC40YHQutGA0LXRgtC90LDRjyDQvNCw0YLQtdC80LDRgtC40LrQsC%2FQm9C10LrRhtC40LgvMjAwNi9kMDAyMDIwXzIxLjAxLjA2X2Z1bGwucGRmIiwidGl0bGUiOiJkMDAyMDIwXzIxLjAxLjA2X2Z1bGwucGRmIiwibm9pZnJhbWUiOmZhbHNlLCJ1aWQiOiIxNjc4MjkwNzgiLCJ0cyI6MTU3OTcwNzA3MzkwNywieXUiOiIyMTMyMDgwMDgxNTc0Njk3NTc2In0%3D
